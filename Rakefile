@@ -17,10 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "msf"
   gem.homepage = "http://github.com/vanetten/msf"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "ActiveRecord access to MSF file (sqlite3 database)."
+  gem.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the data. Much taken from Angel Pizarro's thermo_msf."
   gem.email = "bill@bioteam.net"
   gem.authors = ["William Van Etten"]
+  gem.files.include 'bin/ibspectra'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

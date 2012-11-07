@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+#
+require 'msf'
+
+msf_file = ARGV.shift
+
+if msf_file.nil? || !File.readable?(msf_file)
+  "Usage: #{File.basename($0)} file.msf\n\n"
+end
+
+msf = MSF.new({:path => msf_file})
+header = %w{"accession" "start.pos" "peptide" "modif" "charge" "theo.mass" "exp.mass" "parent.intens" "retention.time" "spectrum" "score.mascot" "score.phenyx" "use.for.quant" "file" "X113_mass" "X114_mass" "X115_mass" "X116_mass" "X117_mass" "X118_mass" "X119_mass" "X121_mass" "X113_ions" "X114_ions" "X115_ions" "X116_ions" "X117_ions" "X118_ions" "X119_ions" "X121_ions"}
+puts header.join("\t") + "\n"
+Peptide.all.each do |peptide|
+  next unless peptide.confidence_level == 3
+  next if peptide.terminal_modification.nil?
+  next unless peptide.spectrum.search_spectrum
+  peptide.proteins.each do |protein|
+    row = []
+    row << '"' + protein.protein_annotation.accession + '"'
+    row << protein.sequence.index(peptide.sequence) + 1
+    row << '"' + peptide.sequence + '"'
+    row << '"' + peptide.isobar_sequence + '"'
+    row << peptide.spectrum.spectrum_header.charge
+    row << peptide.theoretical_mass
+    row << peptide.spectrum.spectrum_header.mass_peak.mass
+    row << peptide.spectrum.spectrum_header.mass_peak.intensity
+    row << peptide.spectrum.spectrum_header.retention_time
+    row << '"' + peptide.spectrum.spectrum_header.title + '"'
+    row << peptide.peptide_score.score_value
+    row << 0
+    row << 'TRUE'
+    row << '"' + File.basename(msf_file) + '"'
+    peptide.spectrum.search_spectrum.reporter_ion_quan_results.each do |result|
+      row << result.mass
+    end
+    peptide.spectrum.search_spectrum.reporter_ion_quan_results.each do |result|
+      row << result.height
+    end
+    puts row.join("\t") + "\n"
+  end
+end

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12C54" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AminoAcid" syncable="YES">
+        <attribute name="aminoAcidID" optional="YES" syncable="YES"/>
+        <attribute name="aminoAcidName" optional="YES" syncable="YES"/>
+        <attribute name="averageMass" optional="YES" syncable="YES"/>
+        <attribute name="monoisotopicMass" optional="YES" syncable="YES"/>
+        <attribute name="oneLetterCode" optional="YES" syncable="YES"/>
+        <attribute name="sumFormula" optional="YES" syncable="YES"/>
+        <attribute name="threeLetterCode" optional="YES" syncable="YES"/>
+        <relationship name="aminoAcidModifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AminoAcidsModificationsAminoAcids" inverseName="aminoAcid" inverseEntity="AminoAcidsModificationsAminoAcids" syncable="YES"/>
+    </entity>
+    <entity name="AminoAcidModification" syncable="YES">
+        <attribute name="abbreviation" optional="YES" syncable="YES"/>
+        <attribute name="aminoAcidModificationID" optional="YES" syncable="YES"/>
+        <attribute name="deltaAverageMass" optional="YES" syncable="YES"/>
+        <attribute name="deltaMass" optional="YES" syncable="YES"/>
+        <attribute name="isActive" optional="YES" syncable="YES"/>
+        <attribute name="isSubstitution" optional="YES" syncable="YES"/>
+        <attribute name="leavingGroup" optional="YES" syncable="YES"/>
+        <attribute name="modificationName" optional="YES" syncable="YES"/>
+        <attribute name="positionType" optional="YES" syncable="YES"/>
+        <attribute name="substitution" optional="YES" syncable="YES"/>
+        <attribute name="unimodAccession" optional="YES" syncable="YES"/>
+        <relationship name="aminoAcid" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidsModificationsAminoAcids" inverseName="aminoAcidModification" inverseEntity="AminoAcidsModificationsAminoAcids" syncable="YES"/>
+        <relationship name="internalPeptides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeptidesAminoAcidModifications" inverseName="internalModification" inverseEntity="PeptidesAminoAcidModifications" syncable="YES"/>
+        <relationship name="neutralLoss" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModificationsAminoAcidsNL" inverseName="aminoAcidModification" inverseEntity="AminoAcidModificationsAminoAcidsNL" syncable="YES"/>
+        <relationship name="terminalPeptides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeptideTerminalModifications" inverseName="terminalModification" inverseEntity="PeptideTerminalModifications" syncable="YES"/>
+    </entity>
+    <entity name="AminoAcidModificationsAminoAcidsNL" syncable="YES">
+        <attribute name="aminoAcidID" optional="YES" syncable="YES"/>
+        <attribute name="aminoAcidModificationID" optional="YES" syncable="YES"/>
+        <attribute name="neutralLossID" optional="YES" syncable="YES"/>
+        <relationship name="aminoAcidModification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModification" inverseName="neutralLoss" inverseEntity="AminoAcidModification" syncable="YES"/>
+        <relationship name="neutralLoss" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModificationsNeutralLoss" inverseName="aminoAcidModifications" inverseEntity="AminoAcidModificationsNeutralLoss" syncable="YES"/>
+    </entity>
+    <entity name="AminoAcidModificationsNeutralLoss" syncable="YES">
+        <attribute name="averageMass" optional="YES" syncable="YES"/>
+        <attribute name="monoisotopicMass" optional="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" syncable="YES"/>
+        <attribute name="neutralLossID" optional="YES" syncable="YES"/>
+        <relationship name="aminoAcidModifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AminoAcidModificationsAminoAcidsNL" inverseName="neutralLoss" inverseEntity="AminoAcidModificationsAminoAcidsNL" syncable="YES"/>
+    </entity>
+    <entity name="AminoAcidsModificationsAminoAcids" syncable="YES">
+        <attribute name="aminoAcidID" optional="YES" syncable="YES"/>
+        <attribute name="aminoAcidModificationID" optional="YES" syncable="YES"/>
+        <attribute name="classification" optional="YES" syncable="YES"/>
+        <relationship name="aminoAcid" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcid" inverseName="aminoAcidModifications" inverseEntity="AminoAcid" syncable="YES"/>
+        <relationship name="aminoAcidModification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModification" inverseName="aminoAcid" inverseEntity="AminoAcidModification" syncable="YES"/>
+    </entity>
+    <entity name="AnnotationDataset" syncable="YES"/>
+    <entity name="AnnotationDataVersion" syncable="YES"/>
+    <entity name="AnnotationGroups" syncable="YES"/>
+    <entity name="Annotations" syncable="YES"/>
+    <entity name="AnnotationsAnnotationGroups" syncable="YES"/>
+    <entity name="AnnotationsProteins" syncable="YES"/>
+    <entity name="AnnotationTypes" syncable="YES"/>
+    <entity name="Chromatograms" syncable="YES">
+        <attribute name="chromatogram" optional="YES" syncable="YES"/>
+        <attribute name="fileID" optional="YES" syncable="YES"/>
+        <attribute name="traceType" optional="YES" syncable="YES"/>
+        <relationship name="fileInfo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FileInfo" inverseName="chromatograms" inverseEntity="FileInfo" syncable="YES"/>
+    </entity>
+    <entity name="CustomDataFields" syncable="YES"/>
+    <entity name="CustomDataPeptides" syncable="YES"/>
+    <entity name="CustomDataProcessinNodes" syncable="YES"/>
+    <entity name="CustomDataProteins" syncable="YES"/>
+    <entity name="CustomDataSpectra" syncable="YES"/>
+    <entity name="Enzymes" syncable="YES"/>
+    <entity name="EnzymesCleavageSpecificities" syncable="YES"/>
+    <entity name="EventAnnotations" syncable="YES"/>
+    <entity name="EventAreaAnnotations" syncable="YES"/>
+    <entity name="Events" syncable="YES"/>
+    <entity name="FastaFiles" syncable="YES"/>
+    <entity name="FastaFilesProteinAnnotations" syncable="YES"/>
+    <entity name="FileInfo" syncable="YES">
+        <attribute name="fileID" optional="YES" syncable="YES"/>
+        <attribute name="fileName" optional="YES" syncable="YES"/>
+        <attribute name="fileSize" optional="YES" syncable="YES"/>
+        <attribute name="fileTime" optional="YES" syncable="YES"/>
+        <attribute name="fileType" optional="YES" syncable="YES"/>
+        <attribute name="physicalFileName" optional="YES" syncable="YES"/>
+        <relationship name="chromatograms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chromatograms" inverseName="fileInfo" inverseEntity="Chromatograms" syncable="YES"/>
+        <relationship name="massPeaks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MassPeak" inverseName="fileInfo" inverseEntity="MassPeak" syncable="YES"/>
+    </entity>
+    <entity name="MassPeak" syncable="YES">
+        <attribute name="charge" optional="YES" syncable="YES"/>
+        <attribute name="fileID" optional="YES" syncable="YES"/>
+        <attribute name="intensity" optional="YES" syncable="YES"/>
+        <attribute name="ionInjectTime" optional="YES" syncable="YES"/>
+        <attribute name="mass" optional="YES" syncable="YES"/>
+        <attribute name="massPeakID" optional="YES" syncable="YES"/>
+        <attribute name="percentIsolationInterference" optional="YES" syncable="YES"/>
+        <attribute name="scanNumbers" optional="YES" syncable="YES"/>
+        <relationship name="fileInfo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FileInfo" inverseName="massPeaks" inverseEntity="FileInfo" syncable="YES"/>
+        <relationship name="spectrumHeader" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrumHeader" inverseName="massPeak" inverseEntity="SpectrumHeader" syncable="YES"/>
+    </entity>
+    <entity name="MassPeakRelations" syncable="YES"/>
+    <entity name="Peptide">
+        <attribute name="annotation" optional="YES" syncable="YES"/>
+        <attribute name="confidenceLevel" optional="YES" syncable="YES"/>
+        <attribute name="hidden" optional="YES" syncable="YES"/>
+        <attribute name="matchedIonsCount" optional="YES" syncable="YES"/>
+        <attribute name="missedCleavages" optional="YES" syncable="YES"/>
+        <attribute name="peptideID" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="searchEngneRank" optional="YES" syncable="YES"/>
+        <attribute name="sequence" optional="YES" syncable="YES"/>
+        <attribute name="spectrumID" optional="YES" syncable="YES"/>
+        <attribute name="totalIonsCount" optional="YES" syncable="YES"/>
+        <attribute name="uniquePeptideSeqeunceID" optional="YES" syncable="YES"/>
+        <relationship name="internalModifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeptidesAminoAcidModifications" inverseName="peptide" inverseEntity="PeptidesAminoAcidModifications" syncable="YES"/>
+        <relationship name="peptideScore" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PeptideScores" inverseName="peptide" inverseEntity="PeptideScores" syncable="YES"/>
+        <relationship name="proteins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeptidesProteins" inverseName="peptide" inverseEntity="PeptidesProteins" syncable="YES"/>
+        <relationship name="spectrum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Spectrum" inverseName="peptides" inverseEntity="Spectrum" syncable="YES"/>
+        <relationship name="terminalModification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PeptideTerminalModifications" inverseName="peptide" inverseEntity="PeptideTerminalModifications" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="PeptideDecoy" syncable="YES"/>
+    <entity name="PeptidesAminoAcidModifications" syncable="YES">
+        <attribute name="aminoAcidModificationID" optional="YES" syncable="YES"/>
+        <attribute name="peptideID" optional="YES" syncable="YES"/>
+        <attribute name="position" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <relationship name="internalModification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModification" inverseName="internalPeptides" inverseEntity="AminoAcidModification" syncable="YES"/>
+        <relationship name="peptide" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Peptide" inverseName="internalModifications" inverseEntity="Peptide" syncable="YES"/>
+    </entity>
+    <entity name="PeptidesAminoAcidModificationsDecoy" syncable="YES"/>
+    <entity name="PeptideScoreDecoy" syncable="YES"/>
+    <entity name="PeptideScores" syncable="YES">
+        <attribute name="peptideID" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeID" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="scoreID" optional="YES" syncable="YES"/>
+        <attribute name="scoreValue" optional="YES" syncable="YES"/>
+        <relationship name="peptide" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Peptide" inverseName="peptideScore" inverseEntity="Peptide" syncable="YES"/>
+    </entity>
+    <entity name="PeptidesProteins" syncable="YES">
+        <attribute name="peptideID" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="proteinID" optional="YES" syncable="YES"/>
+        <relationship name="peptide" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Peptide" inverseName="proteins" inverseEntity="Peptide" syncable="YES"/>
+        <relationship name="protein" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Protein" inverseName="peptides" inverseEntity="Protein" syncable="YES"/>
+    </entity>
+    <entity name="PeptidesProteinsDecoy" syncable="YES"/>
+    <entity name="PeptideTerminalModifications" syncable="YES">
+        <attribute name="peptideID" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="terminalModificationID" optional="YES" syncable="YES"/>
+        <relationship name="peptide" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Peptide" inverseName="terminalModification" inverseEntity="Peptide" syncable="YES"/>
+        <relationship name="terminalModification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AminoAcidModification" inverseName="terminalPeptides" inverseEntity="AminoAcidModification" syncable="YES"/>
+    </entity>
+    <entity name="PeptideTerminalModificationsDecoy" syncable="YES"/>
+    <entity name="PrecursorIonAreaSearchSpectra" syncable="YES"/>
+    <entity name="PrecursorIonQuanResults" syncable="YES"/>
+    <entity name="PrecursorIonQuanResultsSearchSpectra" syncable="YES"/>
+    <entity name="ProcessingNodeConnectionPoints" syncable="YES"/>
+    <entity name="ProcessingNodeExtensions" syncable="YES"/>
+    <entity name="ProcessingNodeFilterParameters" syncable="YES"/>
+    <entity name="ProcessingNodeInterfaces" syncable="YES"/>
+    <entity name="ProcessingNodeParameters" syncable="YES"/>
+    <entity name="ProcessingNodes" syncable="YES"/>
+    <entity name="ProcessingNodeScores" syncable="YES"/>
+    <entity name="ProcessingNodesSpectra" syncable="YES"/>
+    <entity name="Protein" syncable="YES">
+        <attribute name="isMasterProtein" optional="YES" syncable="YES"/>
+        <attribute name="proteinID" optional="YES" syncable="YES"/>
+        <attribute name="seqeunceHashCode" optional="YES" syncable="YES"/>
+        <attribute name="sequence" optional="YES" syncable="YES"/>
+        <relationship name="peptides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeptidesProteins" inverseName="protein" inverseEntity="PeptidesProteins" syncable="YES"/>
+        <relationship name="proteinAnnotation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProteinAnnotations" inverseName="protein" inverseEntity="ProteinAnnotations" syncable="YES"/>
+        <relationship name="proteinScore" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProteinScores" inverseName="protein" inverseEntity="ProteinScores" syncable="YES"/>
+    </entity>
+    <entity name="ProteinAnnotations" syncable="YES">
+        <attribute name="decription" optional="YES" syncable="YES"/>
+        <attribute name="descriptionHash" optional="YES" syncable="YES"/>
+        <attribute name="proteinAnnotationID" optional="YES" syncable="YES"/>
+        <attribute name="proteinID" optional="YES" syncable="YES"/>
+        <attribute name="taxonomyID" optional="YES" syncable="YES"/>
+        <relationship name="protein" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Protein" inverseName="proteinAnnotation" inverseEntity="Protein" syncable="YES"/>
+    </entity>
+    <entity name="ProteinIdentificationGroups" syncable="YES"/>
+    <entity name="ProteinScores" syncable="YES">
+        <attribute name="coverage" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="proteinID" optional="YES" syncable="YES"/>
+        <attribute name="proteinIdentificationGroupID" optional="YES" syncable="YES"/>
+        <attribute name="proteinScore" optional="YES" syncable="YES"/>
+        <relationship name="protein" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Protein" inverseName="proteinScore" inverseEntity="Protein" syncable="YES"/>
+    </entity>
+    <entity name="ProteinScoresDecoy" syncable="YES"/>
+    <entity name="ProteinsProteinGroups" syncable="YES">
+        <attribute name="proteinGroupID" optional="YES" syncable="YES"/>
+        <attribute name="proteinID" optional="YES" syncable="YES"/>
+    </entity>
+    <entity name="PtmAnnotationData" syncable="YES"/>
+    <entity name="ReporterIonQuanResults" syncable="YES">
+        <attribute name="height" optional="YES" syncable="YES"/>
+        <attribute name="mass" optional="YES" syncable="YES"/>
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="quanChannelID" optional="YES" syncable="YES"/>
+        <attribute name="spectrumID" optional="YES" syncable="YES"/>
+        <relationship name="searchSpectrum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReporterIonQuanResultsSearchSpectra" inverseName="reporterIonQuanResults" inverseEntity="ReporterIonQuanResultsSearchSpectra" syncable="YES"/>
+    </entity>
+    <entity name="ReporterIonQuanResultsSearchSpectra" syncable="YES">
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="searchSpectrumID" optional="YES" syncable="YES"/>
+        <attribute name="spectrumID" optional="YES" syncable="YES"/>
+        <relationship name="reporterIonQuanResults" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ReporterIonQuanResults" inverseName="searchSpectrum" inverseEntity="ReporterIonQuanResults" syncable="YES"/>
+        <relationship name="spectrum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Spectrum" inverseName="searchSpectrum" inverseEntity="Spectrum" syncable="YES"/>
+    </entity>
+    <entity name="ScanEvent" syncable="YES">
+        <attribute name="activationType" optional="YES" syncable="YES"/>
+        <attribute name="ionization" optional="YES" syncable="YES"/>
+        <attribute name="massAnalyzer" optional="YES" syncable="YES"/>
+        <attribute name="msLevel" optional="YES" syncable="YES"/>
+        <attribute name="polarity" optional="YES" syncable="YES"/>
+        <attribute name="scanEventID" optional="YES" syncable="YES"/>
+        <attribute name="scanType" optional="YES" syncable="YES"/>
+        <relationship name="spectrumHeaders" optional="YES" toMany="YES" deletionRule="Nullify" syncable="YES"/>
+    </entity>
+    <entity name="SchemaInfo" syncable="YES"/>
+    <entity name="Spectrum" syncable="YES">
+        <attribute name="spectrum" optional="YES" syncable="YES"/>
+        <attribute name="spectrumHashCode" optional="YES" syncable="YES"/>
+        <attribute name="uniqueSpectrumID" optional="YES" syncable="YES"/>
+        <relationship name="peptides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Peptide" inverseName="spectrum" inverseEntity="Peptide" syncable="YES"/>
+        <relationship name="searchSpectrum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReporterIonQuanResultsSearchSpectra" inverseName="spectrum" inverseEntity="ReporterIonQuanResultsSearchSpectra" syncable="YES"/>
+        <relationship name="spectrumHeader" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrumHeader" inverseName="spectrum" inverseEntity="SpectrumHeader" syncable="YES"/>
+        <relationship name="spectrumScore" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrumScores" inverseName="spectrum" inverseEntity="SpectrumScores" syncable="YES"/>
+    </entity>
+    <entity name="SpectrumHeader" syncable="YES">
+        <attribute name="charge" optional="YES" syncable="YES"/>
+        <attribute name="creatingProcessingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="firstScan" optional="YES" syncable="YES"/>
+        <attribute name="hidden" optional="YES" syncable="YES"/>
+        <attribute name="lastScan" optional="YES" syncable="YES"/>
+        <attribute name="mass" optional="YES" syncable="YES"/>
+        <attribute name="massPeakID" optional="YES" syncable="YES"/>
+        <attribute name="retentionTime" optional="YES" syncable="YES"/>
+        <attribute name="scanEventID" optional="YES" syncable="YES"/>
+        <attribute name="scanNumbers" optional="YES" syncable="YES"/>
+        <attribute name="spectrumID" optional="YES" syncable="YES"/>
+        <attribute name="uniqueSpectrumID" optional="YES" syncable="YES"/>
+        <relationship name="massPeak" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MassPeak" inverseName="spectrumHeader" inverseEntity="MassPeak" syncable="YES"/>
+        <relationship name="spectrum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Spectrum" inverseName="spectrumHeader" inverseEntity="Spectrum" syncable="YES"/>
+        <relationship name="uniqueSpectrum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SpectrumHeader" syncable="YES"/>
+    </entity>
+    <entity name="SpectrumScores" syncable="YES">
+        <attribute name="processingNodeNumber" optional="YES" syncable="YES"/>
+        <attribute name="score" optional="YES" syncable="YES"/>
+        <attribute name="spectrumID" optional="YES" syncable="YES"/>
+        <relationship name="spectrum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Spectrum" inverseName="spectrumScore" inverseEntity="Spectrum" syncable="YES"/>
+    </entity>
+    <entity name="TaxonomyNames" syncable="YES"/>
+    <entity name="TaxonomyNodes" syncable="YES"/>
+    <entity name="WorkflowInfo" syncable="YES"/>
+    <entity name="WorkflowMessages" syncable="YES"/>
+    <elements>
+        <element name="AminoAcid" positionX="-1647" positionY="-648" width="155" height="163"/>
+        <element name="AminoAcidModification" positionX="-2124" positionY="-655" width="144" height="268"/>
+        <element name="AminoAcidModificationsAminoAcidsNL" positionX="-1919" positionY="-504" width="227" height="118"/>
+        <element name="AminoAcidModificationsNeutralLoss" positionX="-1647" positionY="-450" width="234" height="118"/>
+        <element name="AminoAcidsModificationsAminoAcids" positionX="-1917" positionY="-631" width="218" height="118"/>
+        <element name="AnnotationDataset" positionX="-2430" positionY="497" width="128" height="43"/>
+        <element name="AnnotationDataVersion" positionX="-2430" positionY="450" width="128" height="43"/>
+        <element name="AnnotationGroups" positionX="-2430" positionY="587" width="128" height="43"/>
+        <element name="Annotations" positionX="-2430" positionY="360" width="128" height="43"/>
+        <element name="AnnotationsAnnotationGroups" positionX="-2430" positionY="630" width="173" height="43"/>
+        <element name="AnnotationsProteins" positionX="-2430" positionY="405" width="128" height="43"/>
+        <element name="AnnotationTypes" positionX="-2430" positionY="540" width="128" height="43"/>
+        <element name="Chromatograms" positionX="-1485" positionY="-238" width="128" height="103"/>
+        <element name="CustomDataFields" positionX="-1269" positionY="567" width="128" height="43"/>
+        <element name="CustomDataPeptides" positionX="-1269" positionY="659" width="128" height="43"/>
+        <element name="CustomDataProcessinNodes" positionX="-1449" positionY="495" width="171" height="43"/>
+        <element name="CustomDataProteins" positionX="-2160" positionY="540" width="128" height="43"/>
+        <element name="CustomDataSpectra" positionX="-1269" positionY="612" width="128" height="43"/>
+        <element name="Enzymes" positionX="-2025" positionY="360" width="128" height="43"/>
+        <element name="EnzymesCleavageSpecificities" positionX="-2025" positionY="405" width="171" height="43"/>
+        <element name="EventAnnotations" positionX="-2160" positionY="452" width="128" height="43"/>
+        <element name="EventAreaAnnotations" positionX="-2160" positionY="360" width="128" height="43"/>
+        <element name="Events" positionX="-2160" positionY="405" width="128" height="43"/>
+        <element name="FastaFiles" positionX="-1406" positionY="540" width="128" height="43"/>
+        <element name="FastaFilesProteinAnnotations" positionX="-1458" positionY="450" width="180" height="43"/>
+        <element name="FileInfo" positionX="-1458" positionY="-99" width="128" height="163"/>
+        <element name="MassPeak" positionX="-1431" positionY="99" width="128" height="193"/>
+        <element name="MassPeakRelations" positionX="-2295" positionY="542" width="128" height="43"/>
+        <element name="Peptide" positionX="-2124" positionY="-325" width="153" height="298"/>
+        <element name="PeptideDecoy" positionX="-2115" positionY="-378" width="128" height="43"/>
+        <element name="PeptidesAminoAcidModifications" positionX="-2439" positionY="-430" width="189" height="133"/>
+        <element name="PeptidesAminoAcidModificationsDecoy" positionX="-2439" positionY="-486" width="216" height="43"/>
+        <element name="PeptideScoreDecoy" positionX="-2367" positionY="-261" width="128" height="43"/>
+        <element name="PeptideScores" positionX="-2369" positionY="-205" width="128" height="133"/>
+        <element name="PeptidesProteins" positionX="-2108" positionY="36" width="128" height="118"/>
+        <element name="PeptidesProteinsDecoy" positionX="-2178" positionY="-16" width="128" height="43"/>
+        <element name="PeptideTerminalModifications" positionX="-1863" positionY="-306" width="171" height="118"/>
+        <element name="PeptideTerminalModificationsDecoy" positionX="-1890" positionY="-360" width="207" height="43"/>
+        <element name="PrecursorIonAreaSearchSpectra" positionX="-1899" positionY="542" width="198" height="43"/>
+        <element name="PrecursorIonQuanResults" positionX="-1890" positionY="360" width="189" height="43"/>
+        <element name="PrecursorIonQuanResultsSearchSpectra" positionX="-1953" positionY="495" width="252" height="43"/>
+        <element name="ProcessingNodeConnectionPoints" positionX="-1665" positionY="585" width="216" height="43"/>
+        <element name="ProcessingNodeExtensions" positionX="-1665" positionY="540" width="216" height="43"/>
+        <element name="ProcessingNodeFilterParameters" positionX="-1899" positionY="450" width="198" height="43"/>
+        <element name="ProcessingNodeInterfaces" positionX="-1667" positionY="497" width="164" height="43"/>
+        <element name="ProcessingNodeParameters" positionX="-1665" positionY="450" width="162" height="43"/>
+        <element name="ProcessingNodes" positionX="-1665" positionY="360" width="128" height="43"/>
+        <element name="ProcessingNodeScores" positionX="-1665" positionY="405" width="144" height="43"/>
+        <element name="ProcessingNodesSpectra" positionX="-1665" positionY="630" width="153" height="43"/>
+        <element name="Protein" positionX="-2115" positionY="189" width="128" height="148"/>
+        <element name="ProteinAnnotations" positionX="-2349" positionY="-54" width="128" height="133"/>
+        <element name="ProteinIdentificationGroups" positionX="-1449" positionY="405" width="171" height="43"/>
+        <element name="ProteinScores" positionX="-2412" positionY="162" width="171" height="133"/>
+        <element name="ProteinScoresDecoy" positionX="-2385" positionY="108" width="128" height="43"/>
+        <element name="ProteinsProteinGroups" positionX="-1404" positionY="585" width="128" height="73"/>
+        <element name="PtmAnnotationData" positionX="-1829" positionY="405" width="128" height="43"/>
+        <element name="ReporterIonQuanResults" positionX="-1890" positionY="-160" width="180" height="133"/>
+        <element name="ReporterIonQuanResultsSearchSpectra" positionX="-1890" positionY="9" width="234" height="118"/>
+        <element name="ScanEvent" positionX="-1269" positionY="360" width="128" height="163"/>
+        <element name="SchemaInfo" positionX="-1665" positionY="675" width="128" height="43"/>
+        <element name="Spectrum" positionX="-1863" positionY="176" width="128" height="148"/>
+        <element name="SpectrumHeader" positionX="-1629" positionY="-99" width="128" height="268"/>
+        <element name="SpectrumScores" positionX="-1622" positionY="216" width="128" height="103"/>
+        <element name="TaxonomyNames" positionX="-2295" positionY="360" width="128" height="43"/>
+        <element name="TaxonomyNodes" positionX="-2295" positionY="405" width="128" height="43"/>
+        <element name="WorkflowInfo" positionX="-1406" positionY="657" width="128" height="43"/>
+        <element name="WorkflowMessages" positionX="-1269" positionY="522" width="128" height="43"/>
+    </elements>
+</model>
