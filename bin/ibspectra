@@ -5,7 +5,7 @@ require 'msf'
 msf_file = ARGV.shift
 
 if msf_file.nil? || !File.readable?(msf_file)
-  "Usage: #{File.basename($0)} file.msf\n\n"
+  puts "Usage: #{File.basename($0)} file.msf\n\n"
   exit 0
 end
 
