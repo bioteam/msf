@@ -94,6 +94,7 @@ Gem::Specification.new do |s|
     "lib/msf/sql/quan_result.rb",
     "lib/msf/sql/result_filter_set.rb",
     "lib/msf/sql/taxonomy_node.rb",
+    "msf.gemspec",
     "spec/msf_spec.rb",
     "spec/spec_helper.rb"
   ]
