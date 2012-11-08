@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "msf"
   gem.homepage = "https://github.com/bioteam/msf"
   gem.license = "MIT"
-  gem.summary = "Thermo MSF file parser using ActiveRecord as ORM."
-  gem.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the its data. Much has been taken from Angel Pizarro's thermo_msf."
+  gem.summary = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the its data. Much has been taken from Angel Pizarro's thermo_msf."
+  gem.description = "Thermo MSF file parser using ActiveRecord as ORM."
   gem.email = "bill@bioteam.net"
   gem.authors = ["William Van Etten"]
   gem.files.include 'bin/ibspectra'

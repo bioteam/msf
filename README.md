@@ -20,12 +20,14 @@ operating my version of Thermo's Proteome Discoverer (1.3).
 
     gem install msf
 
-## Usage ##
+## API Usage ##
 
     msf = MSF.new({:path => msf_file})
     Peptides.all do |peptide|
       <whatever>
     end
+
+## CLI Usage ##
 
     ibspectra msf_file >> msf_file/msf_file.ibspectra.csv
 
@@ -36,16 +38,27 @@ See erd/erd.png for an Entity Relationship Diagram of the MSF schema.
 ## Contributing to msf ##
  
 * Checkout
+
 `git clone git@github.com:bioteam/msf.git; cd msf`
+
 * Fix bugs, add features
+
 `<make changes>`
+
 * Test
+
 `rspec`
+
 * Update version
+
 `rake version:bump:patch`
+
 * Commit changes
+
 `git commit`
+
 * Release
+
 `rake release`
 		
 ## Copyright ##
