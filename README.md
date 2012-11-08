@@ -36,16 +36,17 @@ See erd/erd.png for an Entity Relationship Diagram of the MSF schema.
 ## Contributing to msf ##
  
 * Checkout
+`git clone git@github.com:bioteam/msf.git; cd msf`
 * Fix bugs, add features
+`<make changes>`
 * Test
+`rspec`
 * Update version
+`rake version:bump:patch`
+* Commit changes
+`git commit`
 * Release
-
-    git clone git@github.com:bioteam/msf.git; cd msf
-		<make changes>
-		rspec
-		rake version:bump:patch
-		rake release
+`rake release`
 		
 ## Copyright ##
 
