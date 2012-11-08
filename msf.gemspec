@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "msf"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["William Van Etten"]
-  s.date = "2012-11-07"
-  s.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the data. Much taken from Angel Pizarro's thermo_msf."
+  s.date = "2012-11-08"
+  s.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the its data. Much has been taken from Angel Pizarro's thermo_msf."
   s.email = "bill@bioteam.net"
   s.executables = ["ibspectra"]
   s.extra_rdoc_files = [
@@ -98,11 +98,11 @@ Gem::Specification.new do |s|
     "spec/msf_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://github.com/vanetten/msf"
+  s.homepage = "https://github.com/bioteam/msf"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "ActiveRecord access to MSF file (sqlite3 database)."
+  s.summary = "Thermo MSF file parser using ActiveRecord as ORM."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
