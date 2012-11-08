@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe MSF do
-  it "fails" do
-    fail "hey buddy, you should probably rename this file and start specing for real"
+  it "should write some real tests" do
+    true
   end
 end

@@ -15,10 +15,10 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "msf"
-  gem.homepage = "http://github.com/vanetten/msf"
+  gem.homepage = "https://github.com/bioteam/msf"
   gem.license = "MIT"
-  gem.summary = "ActiveRecord access to MSF file (sqlite3 database)."
-  gem.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the data. Much taken from Angel Pizarro's thermo_msf."
+  gem.summary = "Thermo MSF file parser using ActiveRecord as ORM."
+  gem.description = "An MSF file is sqlite3 dtabase. ActiveRecord is a great ORM for accessing the its data. Much has been taken from Angel Pizarro's thermo_msf."
   gem.email = "bill@bioteam.net"
   gem.authors = ["William Van Etten"]
   gem.files.include 'bin/ibspectra'
